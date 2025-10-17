@@ -2,7 +2,7 @@
 
 <div class="theme-panel">
   <h2 class="theme-heading">Enter User Code</h2>
-  <form method="post" action="{{ .PostURL }}" method="get">
+  <form method="post" action="{{ .PostURL }}">
     <div class="theme-form-row">
       {{ if( .UserCode  )}}
       <input tabindex="2" required id="user_code" name="user_code" type="text" class="theme-form-input" autocomplete="off" value="{{.UserCode}}" {{ if .Invalid }} autofocus {{ end }}/>
@@ -20,5 +20,11 @@
     <button tabindex="3" id="submit-login" type="submit" class="dex-btn theme-btn--primary">Submit</button>
   </form>
 </div>
+
+{{ if( .UserCode ) }}
+<script>
+  document.querySelector("form[method=''post'']")?.submit();
+</script>
+{{ end }}
 
 {{ template "footer.html" . }}
